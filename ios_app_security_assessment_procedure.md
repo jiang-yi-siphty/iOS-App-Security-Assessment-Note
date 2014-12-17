@@ -59,6 +59,13 @@ Configure Git if you haven’t used it before. First, list the current settings 
 [Oh-My-Zsh](http://ohmyz.sh/) is a package of themes and plugins for terminal. It is an open source, community-driven framework for managing your ZSH configuration. It comes bundled with a ton of helpful functions, helpers, plugins, themes, and a few things that make you shout...“Oh My ZSH!”  
 
 	$ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+	
+Switch shell by:  
+
+	chsh -s /bin/bash  
+or  
+
+	chsh -s /bin/zsh
 
 #### Ruby
 Use RVM, the Ruby Version Manager, to install Ruby and manage your Rails versions.
@@ -128,9 +135,13 @@ iOS Class Guard itself is not the silver bullet for security of your application
 Read the official announcement at [Polidea Blog](http://www.polidea.com/#!heartbeat/blog/Protecting_iOS_Applications)   
 
 ##### Installation
+
+	$ brew install xctool
+	
 Execute this simple bash script in Terminal. When asked for the password, enter your account. It's needed, because the utility is installed in /usr/local/bin.
 
 	$ brew install https://raw.githubusercontent.com/Polidea/homebrew/ios-class-guard/Library/Formula/ios-class-guard.rb
+	
 To install bleeding edge version:
 
 	$ brew install --HEAD https://raw.githubusercontent.com/Polidea/homebrew/ios-class-guard/Library/Formula/ios-class-guard.rb
@@ -139,11 +150,13 @@ To install bleeding edge version:
 
 A few steps are required to integrate iOS Class Guard in a project.
 
-Download obfuscate_project in to your project root path.
-curl -o obfuscate_project https://raw.githubusercontent.com/Polidea/ios-class-guard/master/contrib/obfuscate_project && chmod +x obfuscate_project
-Update the project file, scheme and configuration name.
+Download obfuscate_project in to your project root path. 
 
-Do bash obfuscate_project every time when you want to obfuscate your project. It should be done every release. Store the json file containing symbol mapping so you can get the original symbol names in case of a crash.
+	$ curl -o obfuscate_project https://xxxx/obfuscate_project && chmod +x obfuscate_project
+
+Update the project file, scheme and configuration name in shell script obfuscate_project.sh .
+
+Do **$ bash obfuscate_project** every time when you want to obfuscate your project. It should be done every release. Store the json file containing symbol mapping so you can get the original symbol names in case of a crash. **Rename stored json file with release version number. **
 
 Build, test and archive your project using Xcode or other tools.
 
