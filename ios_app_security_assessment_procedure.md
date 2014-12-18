@@ -1,13 +1,41 @@
 
-# iOS App Security Assessment Procedure (2014)
+# iOS 8 App Security Assessment Procedure (2014)
+
 
 ## 0. Preparing Environment
 
 ### 0.1. iOS Device
-#### 0.1.1. Jaibreak
-#### 0.1.2. Cydia
-#### 0.1.3. Add Sources/Repos
+#### 0.1.1. Jailbreak
+For iOS 8.x.x, [Taig](http://www.taig.com/) is the best freeware to jailbreak, currently. (Dec 2014)
+#### 0.1.2. Add Sources/Repos
+After jailbreak, we need add sources in Cydia. 
+
+	http://repo.biteyourapple.net/
+	http://coolstar.org/publicrepo/
+	http://repo.insanelyi.com/
+	http://apt.modmyi.com/
+	http://nix.howett.net/theos/
+	http://cydia.xsellize.com/
+	http://apt.weiphone.com/
+	http://Apt.178.com/
+	
 #### 0.1.3. Install Tools
+**afc2add**  
+**AppList**  
+**Appsync for iOS8**  
+**Clutch Beta**  
+**Darwin CC Tools**  
+**iFile**  
+**insanelyi App - iOS8 **  
+**iOS Toolchain**  
+**iWep PRO 8**  
+**ldone**
+**LLVM+Clang**  
+**MobileTerminal(iOS7)**  
+**OpenSSH** (Must change root password after install)  
+**Pod2g's ASLR Tools**  
+**theos8**  
+
 
 ### 0.2. Mac
 Source: [Setting Up Your Development Environment](https://github.com/makersquare/student-dev-box/wiki/Setting-Up-Your-Development-Environment)
@@ -29,7 +57,11 @@ This should pop up a dialog box and instructions for how to install the develope
 	$ xcode-select -p
 	$ xcodebuild -showsdks
 
-#### 0.2.2. homebrew
+#### 0.2.2. iTools/iFunBox
+Both of two application are file manager. Pick your favourite one to install.
+[iTools](http://pro.itools.cn/mac/english)  or [iFunBox](http://www.i-funbox.com/ifunboxmac/)
+
+#### 0.2.3. homebrew
 [homebrew](http://brew.sh/) is a free/open source software package management system that simplifies the installation of software on the Mac OS X operating system. Originally written by Max Howell, the package manager has gained popularity in the Ruby on Rails community and earned praise for its extensibility.
 
 	$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -40,7 +72,7 @@ Follow this up by installing the latest versions of Git and Zsh, then adding Zsh
 
 	$ brew update
 	
-#### 0.2.3. git
+#### 0.2.4. git
 [Git](http://git-scm.com/) is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
 
 	$ brew install git
@@ -56,13 +88,13 @@ Configure Git if you haven’t used it before. First, list the current settings 
 	user.name=Your Real Name
 	user.email=me@example.com
 	
-#### 0.2.4. zsh
+#### 0.2.5. zsh
 [Zsh](http://zsh.sourceforge.net/) is a shell designed for interactive use, although it is also a powerful scripting language. Many of the useful features of bash, ksh, and tcsh were incorporated into zsh; many original features were added.   
 
 	$ brew install zsh
 	$ echo '/usr/local/bin/zsh' | sudo tee -a /etc/shells
 	
-#### 0.2.5. Oh-My-Zsh
+#### 0.2.6. Oh-My-Zsh
 [Oh-My-Zsh](http://ohmyz.sh/) is a package of themes and plugins for terminal. It is an open source, community-driven framework for managing your ZSH configuration. It comes bundled with a ton of helpful functions, helpers, plugins, themes, and a few things that make you shout...“Oh My ZSH!”  
 
 	$ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
@@ -75,7 +107,7 @@ or
 
 	chsh -s /bin/zsh
 
-#### 0.2.6. Ruby
+#### 0.2.7. Ruby
 Use RVM, the Ruby Version Manager, to install Ruby and manage your Rails versions.
 
 RVM will leave your “system Ruby” untouched and use your shell to intercept any calls to Ruby. There’s no need to remove it. The “system Ruby” will remain on your system and the RVM version will take precedence.  
@@ -84,9 +116,57 @@ RVM will leave your “system Ruby” untouched and use your shell to intercept 
 	$ gem -v
 	2.0.14
 Sourse: [Install Ruby on Rails · Mac OS X Yosemite](http://railsapps.github.io/installrubyonrails-mac.html)   
- 
+
+
 #### 0.2.8. theos
-#### 0.2.9. otool
+Set environment  
+
+	$ export THEOS=/opt/theos
+
+Fetch Theos  
+
+	$ sudo git clone git://github.com/DHowett/theos.git $THEOS
+	
+
+#### 0.2.9. ldid
+ldid is a tool for sign iOS app.
+Download packet from following url:  
+<https://github.com/downloads/rpetrich/ldid/ldid.zip> 
+ 
+Unzip it to 
+ 
+	/opt/theos/bin
+	
+
+#### 0.2.10. MobilSubstrate
+Configure MobileSubstrate environment in Terminal  
+
+	$ sudo $THEOS/bin.bootstrap.sh substrate
+Copy libsubstrate.dylib from iOS device /Library/Frameworks/CydiaSubstrate.framework/CydiaSubstrate to local mac's $THEOS/lib/libsubstrate.dylib
+
+	$ sudo mv -f /the/path/to/CydiaSubstrate $THEOS/lib/libsubstrate.dylib
+ 
+#### 0.2.11. dpkg
+Download and install MacPorts from <https://www.macports.org/install.php>
+Than, setup environment and update
+
+	$ export port=/opt/bin/port
+	$ sudo port selfupdate
+	
+Install dpkg
+
+	$ sudo port install dpkg
+	
+
+#### 0.2.12. theos NIC templates
+There are 5 Theos project templates in NIC templates packet. Download and decompress it from  
+<https://github.com/DHowett/theos-nic-templates/archive/master.zip>  
+to  
+
+	$THEOS/templates/iphone
+
+
+#### 0.2.13. otool
 
 
 ## 1. Information Gathering
@@ -185,8 +265,10 @@ What it will look like when you [use iOS Class Guard](https://github.com/Polidea
 ### 4.2. Data Protection API
 
 ### 4.3. Jailbroken Detection
-### 4.3. Secure Memory
-#### 4.3.0. Theory 
+### 4.4. Secure Memory
+#### 4.4.0. Theory 
 
-#### 4.3.1. iMAS memory-security
+#### 4.4.1. iMAS memory-security
 [memory-security](https://github.com/project-imas/memory-security)
+
+### 4.5. 
