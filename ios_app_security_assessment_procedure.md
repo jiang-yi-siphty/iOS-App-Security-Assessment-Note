@@ -44,8 +44,6 @@ If you saw command not found when you typed gcc into your terminal prompt, you'l
 
 	$ xcode-select --install
 	
-	$ brew install xctool
-	
 This should pop up a dialog box and instructions for how to install the developer tools. After installation, we should check gcc version to verify Xcode Command line installation.
 
 	$ gcc --version
@@ -61,7 +59,16 @@ This should pop up a dialog box and instructions for how to install the develope
 Both of two application are file manager. Pick your favourite one to install.
 [iTools](http://pro.itools.cn/mac/english)  or [iFunBox](http://www.i-funbox.com/ifunboxmac/)
 
-#### 0.2.3. homebrew
+#### 0.2.3. Ruby
+Use RVM, the Ruby Version Manager, to install Ruby and manage your Rails versions.
+
+RVM will leave your “system Ruby” untouched and use your shell to intercept any calls to Ruby. There’s no need to remove it. The “system Ruby” will remain on your system and the RVM version will take precedence.  
+
+	$ \curl -L https://get.rvm.io | bash -s stable --ruby
+	$ gem -v
+	2.0.14
+Sourse: [Install Ruby on Rails · Mac OS X Yosemite](http://railsapps.github.io/installrubyonrails-mac.html)   	
+#### 0.2.4. homebrew
 [homebrew](http://brew.sh/) is a free/open source software package management system that simplifies the installation of software on the Mac OS X operating system. Originally written by Max Howell, the package manager has gained popularity in the Ruby on Rails community and earned praise for its extensibility.
 
 	$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -71,21 +78,7 @@ Once that command finishes, run brew doctor and ensure that nothing comes up (if
 Follow this up by installing the latest versions of Git and Zsh, then adding Zsh to the list of shells:
 
 	$ brew update
-	
-#### 0.2.4. git
-[Git](http://git-scm.com/) is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
 
-	$ brew install git
-	$ git version
-	git version 1.9.3 (Apple Git-50)
-Configure Git if you haven’t used it before. First, list the current settings with the git config -l --global command. Then set user.name and user.email if necessary:
-
-	$ git config -l --global
-	fatal: unable to read config file '/Users/.../.gitconfig': No such file or directory
-	$ git config --global user.name "Your Real Name"
-	$ git config --global user.email me@example.com
-	$ git config -l --global
-	user.name=Your Real Name
 	user.email=me@example.com
 	
 #### 0.2.5. zsh
@@ -107,16 +100,20 @@ or
 
 	chsh -s /bin/zsh
 
-#### 0.2.7. Ruby
-Use RVM, the Ruby Version Manager, to install Ruby and manage your Rails versions.
+#### 0.2.7. git
+[Git](http://git-scm.com/) is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
 
-RVM will leave your “system Ruby” untouched and use your shell to intercept any calls to Ruby. There’s no need to remove it. The “system Ruby” will remain on your system and the RVM version will take precedence.  
+	$ brew install git
+	$ git version
+	git version 1.9.3 (Apple Git-50)
+Configure Git if you haven’t used it before. First, list the current settings with the git config -l --global command. Then set user.name and user.email if necessary:
 
-	$ \curl -L https://get.rvm.io | bash -s stable --ruby
-	$ gem -v
-	2.0.14
-Sourse: [Install Ruby on Rails · Mac OS X Yosemite](http://railsapps.github.io/installrubyonrails-mac.html)   
-
+	$ git config -l --global
+	fatal: unable to read config file '/Users/.../.gitconfig': No such file or directory
+	$ git config --global user.name "Your Real Name"
+	$ git config --global user.email me@example.com
+	$ git config -l --global
+	user.name=Your Real Name
 
 #### 0.2.8. theos
 Set environment  
@@ -165,6 +162,25 @@ to
 
 	$THEOS/templates/iphone
 
+#### class-dump
+[class-dump](http://stevenygard.com/projects/class-dump/) is a command-line utility for examining the Objective-C runtime information stored in Mach-O files. It generates declarations for the classes, categories and protocols. This is the same information provided by using ‘otool -ov’, but presented as normal Objective-C declarations, so it is much more compact and readable.
+
+	$ brew install class-dump
+
+#### class-dump-z
+download the excellent little command line utility called class-dump-z that will display all the Objective-C declaration information found in the executable.
+
+Unzip the downloaded bundle and in Terminal, navigate inside the unzipped directory to class-dump-z_0.2a/mac_x86. Here you’ll find a file called class-dump-z. Install this however you might like. I personally like to copy it to my /usr/bin directory:
+
+	$ sudo cp class-dump-z /usr/bin/
+	
+	
+#### xctool	
+
+	$ brew install xctool
+	
+	
+**Source:** [iOS App Security and Analysis: Part 1/2](http://www.raywenderlich.com/45645/ios-app-security-analysis-part-1)
 
 #### 0.2.13. otool
 
@@ -259,6 +275,21 @@ You can take a look what changes are required and how it works in some example p
 Here is class-dump for [non-obfuscated sources](https://github.com/Polidea/ios-class-guard-example/tree/master/SWTableViewCell-no-obfuscated.xcarchive/Headers)
 
 What it will look like when you [use iOS Class Guard](https://github.com/Polidea/ios-class-guard-example/tree/master/SWTableViewCell-obfuscated.xcarchive/Headers)
+
+##### 4.1.1.3. Experience
+In the shell script obfuscate_project, we need add an ignore list as command ios-class-guard 's parameters. Many controls can cause trouble, but they are not that important. Thus, the simple solution is ignore them.
+
+Like:  
+
+	ios-class-guard \
+	--sdk-root "$SDK_DIR" \
+	-i 'machine*' \
+	-i 'AL*' \
+	-i '*Flurry*' \
+	-i '*TestFlight*' \
+	-O symbols.h \
+	build/$CONFIGURATION-$OBFUSCATION_SDK/$TARGET.app/$TARGET
+
 
 ##### 4.1.1.4. [More information](https://github.com/Polidea/ios-class-guard/blob/master/README.md)
 
