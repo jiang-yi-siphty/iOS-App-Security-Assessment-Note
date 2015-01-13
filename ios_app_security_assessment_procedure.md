@@ -1,8 +1,8 @@
 
-# iOS 8 App Security Assessment Procedure (2014)
+# iOS 8 App Security Assessment Procedure (2015 Early)
 
 
-## 0. Preparing Environment
+## 0. Environment Preparing 
 
 ### 0.1. iOS Device
 #### 0.1.1. Jailbreak
