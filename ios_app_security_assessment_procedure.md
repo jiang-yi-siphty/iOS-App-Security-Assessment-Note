@@ -1,8 +1,8 @@
 
-# iOS 8 App Security Assessment Procedure (2015 Early)
+# iOS 8 App Security Assessment Procedure (2014)
 
 
-## 0. Environment Preparing 
+## 0. Preparing Environment
 
 ### 0.1. iOS Device
 #### 0.1.1. Jailbreak
@@ -18,6 +18,7 @@ After jailbreak, we need add sources in Cydia.
 	http://cydia.xsellize.com/
 	http://apt.weiphone.com/
 	http://Apt.178.com/
+	http://AppAddict.org/repo
 	
 #### 0.1.3. Install Tools
 **afc2add**  
@@ -187,7 +188,9 @@ Unzip the downloaded bundle and in Terminal, navigate inside the unzipped direct
 
 ## 1. Information Gathering
 ### 1.1. Crack Apps from AppStore
+Any app download from AppStore are encrypted. When an iOS application is launched, the loader decrypts it and loads it into memory. Before class-dump, the description is compulsory. There are couple of tools can do this job. But, currently, early 2015, only clutch beta on Cydia can work with iOS 8.
 #### clutch
+
 #### appCrackr
 ### otool
 ### class-dump	
@@ -195,7 +198,7 @@ Unzip the downloaded bundle and in Terminal, navigate inside the unzipped direct
 
 ## 3. Runtime Analysis
 
-### 3.1. Disable ASLR 
+### 3.1. Disable ASLR (Address Space Layout Randomization) 
 Source:   
 [Disable ASLR on iOS applications (May 23 2014)](http://www.securitylearn.net/tag/remove-pie-flag-of-ios-app/)  
 [废除应用程序的ASLR特性](http://blog.csdn.net/yiyaaixuexi/article/details/20391001)   
