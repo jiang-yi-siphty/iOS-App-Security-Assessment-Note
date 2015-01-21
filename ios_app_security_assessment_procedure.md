@@ -68,7 +68,9 @@ RVM will leave your “system Ruby” untouched and use your shell to intercept 
 	$ \curl -L https://get.rvm.io | bash -s stable --ruby
 	$ gem -v
 	2.0.14
+	rvm install ruby --enable-shared 
 Sourse: [Install Ruby on Rails · Mac OS X Yosemite](http://railsapps.github.io/installrubyonrails-mac.html)   	
+
 #### 0.2.4. homebrew
 [homebrew](http://brew.sh/) is a free/open source software package management system that simplifies the installation of software on the Mac OS X operating system. Originally written by Max Howell, the package manager has gained popularity in the Ruby on Rails community and earned praise for its extensibility.
 
@@ -189,11 +191,26 @@ Unzip the downloaded bundle and in Terminal, navigate inside the unzipped direct
 ## 1. Information Gathering
 ### 1.1. Crack Apps from AppStore
 Any app download from AppStore are encrypted. When an iOS application is launched, the loader decrypts it and loads it into memory. Before class-dump, the description is compulsory. There are couple of tools can do this job. But, currently, early 2015, only clutch beta on Cydia can work with iOS 8.
-#### clutch
+#### 1.1.1. clutch
+#### 1.1.2. appCrackr
+### 1.2. otool
+### 1.3. class-dump
+### 1.4. iDB	
+[idb](https://github.com/dmayer/idb) is a tool to simplify some common tasks for iOS pentesting and research. 
+#### 1.4.1 Getting started
+Install ruby (1.9.3 and 2.1 are known to work. Don't use 2.0)  
 
-#### appCrackr
-### otool
-### class-dump	
+	$ rvm install ruby --enable-shared 
+	$ rvm install 2.1.0 --enable-shared 
+Shared library support is required!  
+
+	$ gem install bundler  
+	$ brew install qt cmake usbmuxd libimobiledevice  
+	$ gem install idb
+	$ idb
+#### 1.4.2. Manual and Walk Through
+https://github.com/dmayer/idb/wiki/Manual-and--Walk-Through
+	
 ## 2. Traffic Analysis
 
 ## 3. Runtime Analysis
@@ -260,7 +277,10 @@ Download [obfuscate_project](https://github.com/robert-yi-jones/iOS-App-Security
 
 Update the project file, scheme and configuration name in shell script obfuscate_project.sh .
 
-Do **$ bash obfuscate_project** every time when you want to obfuscate your project. It should be done every release. Store the json file containing symbol mapping so you can get the original symbol names in case of a crash. **Rename stored json file with release version number. **
+Do 
+
+	$ ./obfuscate_project 
+every time when you want to obfuscate your project. It should be done every release. Store the json file containing symbol mapping so you can get the original symbol names in case of a crash. **Rename stored json file with release version number. **
 
 Build, test and archive your project using Xcode or other tools.
 
