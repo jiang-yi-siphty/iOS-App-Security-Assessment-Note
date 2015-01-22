@@ -342,8 +342,49 @@ Like:
 
 ### 4.2. Data Protection API
 
-### 4.3. Jailbroken Detection  
-
+### 4.3. Jailbreak Detection
+There are couple of ways can detect jailbreak. The following code is a combination of checking the path and URL scheme of Cydia, checking Non-AppStore apps installation, writing file outside of application bundle. It was introduced by Prateek Gianchandani's article, in Dec 17th, 2013.  
+	
+	
+    +(BOOL)isJailbroken{
+  
+    #if !(TARGET_IPHONE_SIMULATOR)
+  
+       if ([[NSFileManager defaultManager] fileExistsAtPath:@"/Applications/Cydia.app"]){
+          return YES;
+        }else if([[NSFileManager defaultManager] fileExistsAtPath:@"/Library/MobileSubstrate/MobileSubstrate.dylib"]){
+          return YES;
+        }else if([[NSFileManager defaultManager] fileExistsAtPath:@"/bin/bash"]){
+          return YES;
+        }else if([[NSFileManager defaultManager] fileExistsAtPath:@"/usr/sbin/sshd"]){
+          return YES;
+        }else if([[NSFileManager defaultManager] fileExistsAtPath:@"/etc/apt"]){
+          return YES;
+        }
+  
+      NSError *error;
+        NSString *stringToBeWritten = @"This is a test.";
+        [stringToBeWritten writeToFile:@"/private/jailbreak.txt" atomically:YES
+              encoding:NSUTF8StringEncoding error:&error];
+        if(error==nil){
+        //Device is jailbroken
+        return YES;
+      } else {
+        [[NSFileManager defaultManager] removeItemAtPath:@"/private/jailbreak.txt" error:nil];
+      }
+ 
+      if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"cydia://package/com.example.package"]]){
+        //Device is jailbroken
+        return YES;
+      }
+    #endif
+  
+      //All checks have failed. Most probably, the device is not jailbroken
+      return NO;
+    }    
+    
+And, attacker also has way to [bypass above jailbreak detection](http://highaltitudehacks.com/2013/12/17/ios-application-security-part-24-jailbreak-detection-and-evasion/) by using Cycript and Class-dump-z. Developer can use **obfuscation** to slow-down attacker's analysis significantly....   
+This war never ends...  
 ### 4.4. Secure Memory
 #### 4.4.0. Theory 
 
