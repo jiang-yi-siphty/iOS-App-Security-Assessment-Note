@@ -192,6 +192,17 @@ Unzip the downloaded bundle and in Terminal, navigate inside the unzipped direct
 ### 1.1. Crack Apps from AppStore
 Any app download from AppStore are encrypted. When an iOS application is launched, the loader decrypts it and loads it into memory. Before class-dump, the description is compulsory. There are couple of tools can do this job. But, currently, early 2015, only clutch beta on Cydia can work with iOS 8.
 #### 1.1.1. clutch
+Open one ssh shell for iOS device with root password.
+
+Get a app list from iOS device.
+
+	$ clutch 
+Crack the app by clutch
+
+It will be saved to the path like this:
+
+Use a tool to export to anywhere you want.
+ 
 #### 1.1.2. appCrackr
 ### 1.2. otool
 ### 1.3. class-dump
