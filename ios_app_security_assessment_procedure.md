@@ -189,6 +189,21 @@ Unzip the downloaded bundle and in Terminal, navigate inside the unzipped direct
 
 
 ## 1. Information Gathering
+Somethings are different with previous iOS version. Accroding to [iOS Application Security Part 37 - Adapting to iOS 8](http://highaltitudehacks.com/2014/12/21/ios-application-security-part-37-adapting-to-ios-8/), Application's bundle and data are stored in two different paths with different UUID folder names.  
+Application bundle path:
+
+	/var/mobile/Containers/Bundle/Application/<xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx>/<Appname.app>
+	
+Application data path:
+
+	/var/mobile/Containers/Data/Application/<yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy>
+	
+Other original iOS app and Cydia app path has no change:
+
+	/Applications/
+	
+And, most today's iOS file system explorers (iExplorer, iTools, iFunbox) can only look into application data folder when you pick apps.
+
 ### 1.0. Check List of Gathering Information
 ####URL Schemes
  
@@ -383,7 +398,7 @@ There are couple of ways can detect jailbreak. The following code is a combinati
       return NO;
     }    
     
-And, attacker also has way to [bypass above jailbreak detection](http://highaltitudehacks.com/2013/12/17/ios-application-security-part-24-jailbreak-detection-and-evasion/) by using Cycript and Class-dump-z. Developer can use **obfuscation** to slow-down attacker's analysis significantly....   
+And, attacker also has way to [bypass above jailbreak detection](http://highaltitudehacks.com/2013/12/17/ios-application-security-part-24-jailbreak-detection-and-evasion/) by using Cycript and Class-dump-z. Developer can change the +(BOOL)isJailbroken method name to something that doesn’t look quite appealing to the hacker. Or developer can use **obfuscation** to slow-down attacker's analysis significantly....   
 This war never ends...  
 ### 4.4. Secure Memory
 #### 4.4.0. Theory 
