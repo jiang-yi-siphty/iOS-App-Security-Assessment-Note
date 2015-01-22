@@ -189,6 +189,9 @@ Unzip the downloaded bundle and in Terminal, navigate inside the unzipped direct
 
 
 ## 1. Information Gathering
+### 1.0. Check List of Gathering Information
+####URL Schemes
+ 
 ### 1.1. Crack Apps from AppStore
 Any app download from AppStore are encrypted. When an iOS application is launched, the loader decrypts it and loads it into memory. Before class-dump, the description is compulsory. There are couple of tools can do this job. But, currently, early 2015, only clutch beta on Cydia can work with iOS 8.
 #### 1.1.1. clutch
@@ -263,6 +266,12 @@ Download <https://github.com/CarinaTT/MyRemovePIE>
 
 
 ## 4. Security Enhancement
+All following security enhancements are coding solutions in the project. 
+### 4.0. Checklist of Potential Vulnerabilities
+#### Jailbreak 
+**Risk:** ★★★☆☆
+#### URL Scheme abusing
+**Risk:** ★☆☆☆☆ 
 ### 4.1. Obfuscation
 
 #### 4.1.1. iOS Class Guard
@@ -333,11 +342,30 @@ Like:
 
 ### 4.2. Data Protection API
 
-### 4.3. Jailbroken Detection
+### 4.3. Jailbroken Detection  
+
 ### 4.4. Secure Memory
 #### 4.4.0. Theory 
 
 #### 4.4.1. iMAS memory-security
 [memory-security](https://github.com/project-imas/memory-security)
 
-### 4.5. Secure
+### 4.5. Secure URL schemes
+An URL scheme invoking looks like this:
+
+	XXX://parameters
+	
+Accroding to Prateek Gianchandani's Mar 7th, 2014 article, [iOS Application Security Part 30 - Attacking URL Schemes](http://highaltitudehacks.com/2014/03/07/ios-application-security-part-30-attacking-url-schemes/), the unvalidated url scheme invoking can be abused by other app or web page accessed by safari.  Skype iOS app was a bad example. The old version Skype can be invoke and make phone call without user validation. 
+
+	skype://0433092885?cal  
+To invoke native iOS telephone application, safari will prompt a authorisationzation alert. 
+
+	tel://1123456789
+However, in iOS 8, the safari will prompt a alert to ask user's permission about the Skype phone call.
+ 
+**Suggestion :**  
+**1.**  Validate the parameter **sourceApplication** in delegate method:
+	
+	– (BOOL)application:(UIApplication )application openURL:(NSURL )url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+Prepare a whitelist of the applications which is allowed to invoke URL scheme. If the calling app is not on the list, app will ignore parameter in the URL scheme.    
+**2.**  Prompt conformation alert to user at the begining. Let user decide to process or abort any action based on the URL scheme parameters. 
