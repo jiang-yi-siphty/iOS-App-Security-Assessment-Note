@@ -193,16 +193,20 @@ Unzip the downloaded bundle and in Terminal, navigate inside the unzipped direct
 Any app download from AppStore are encrypted. When an iOS application is launched, the loader decrypts it and loads it into memory. Before class-dump, the description is compulsory. There are couple of tools can do this job. But, currently, early 2015, only clutch beta on Cydia can work with iOS 8.
 #### 1.1.1. clutch
 Open one ssh shell for iOS device with root password.
+![image](https://raw.githubusercontent.com/robert-yi-jones/iOS-App-Security-Assessment-Note/master/Screenshots/clutch_0.png)
 
-Get a app list from iOS device.
+#####Get a app list from iOS device.
 
 	$ clutch 
-Crack the app by clutch
+![image](https://raw.githubusercontent.com/robert-yi-jones/iOS-App-Security-Assessment-Note/master/Screenshots/clutch_1.png =814x)
+#####Crack the app by clutch
+	$ clutch eBay
+![image](https://raw.githubusercontent.com/robert-yi-jones/iOS-App-Security-Assessment-Note/master/Screenshots/clutch_2.png =814x)
+#####It will be saved to the path like this:
+![image](https://raw.githubusercontent.com/robert-yi-jones/iOS-App-Security-Assessment-Note/master/Screenshots/clutch_3.png =814x)
+#####Use a tool to export to anywhere you want.
+![image](https://raw.githubusercontent.com/robert-yi-jones/iOS-App-Security-Assessment-Note/master/Screenshots/clutch_4.png =602x) 
 
-It will be saved to the path like this:
-
-Use a tool to export to anywhere you want.
- 
 #### 1.1.2. appCrackr
 ### 1.2. otool
 ### 1.3. class-dump
@@ -336,4 +340,4 @@ Like:
 #### 4.4.1. iMAS memory-security
 [memory-security](https://github.com/project-imas/memory-security)
 
-### 4.5. 
+### 4.5. Secure
