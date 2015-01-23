@@ -21,7 +21,9 @@
 ###Contents
 ###[Readme](https://github.com/robert-yi-jones/iOS-App-Security-Assessment-Note/blob/master/README.md)
 ###Preface
-###Chapter 0: Environment Preparing  
+###Chapter 0: Environment Preparing 
+#### 0.1. iOS Device
+##### 0.1.1. Jailbreak 
 ###Chapter 1: Information Gathering
 #### 1.1. Crack Apps from AppStore
 ##### 1.1.1. clutch

@@ -2,7 +2,7 @@
 # iOS 8 App Security Assessment Procedure (2014)
 
 
-## 0. Preparing Environment
+## 0. Environment Preparing
 
 ### 0.1. iOS Device
 #### 0.1.1. Jailbreak
@@ -283,7 +283,11 @@ Download <https://github.com/CarinaTT/MyRemovePIE>
 ## 4. Security Enhancement
 All following security enhancements are coding solutions in the project. 
 ### 4.0. Checklist of Potential Vulnerabilities
+#### Third Party Library 
+**Risk:** ★★★★☆
 #### Jailbreak 
+**Risk:** ★★★☆☆
+#### Piracy 
 **Risk:** ★★★☆☆
 #### URL Scheme abusing
 **Risk:** ★☆☆☆☆ 
@@ -425,3 +429,14 @@ However, in iOS 8, the safari will prompt a alert to ask user's permission about
 	– (BOOL)application:(UIApplication )application openURL:(NSURL )url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 Prepare a whitelist of the applications which is allowed to invoke URL scheme. If the calling app is not on the list, app will ignore parameter in the URL scheme.    
 **2.**  Prompt conformation alert to user at the begining. Let user decide to process or abort any action based on the URL scheme parameters. 
+### 4.6. Third Party Security Libraries  
+According to [iOS Application Security Part 31 - the Problem With Using Third Party Libraries for Securing Your Apps](http://highaltitudehacks.com/2014/03/18/ios-application-security-part-31-the-problem-with-using-third-party-libraries-for-securing-your-apps/), some third party libraries provide security enhancement. It can help us to detect jailbroken and piracy etc. It makes complicate things simple.  Like [Shmoopi Anti-Piracy Library](https://github.com/Shmoopi/AntiPiracy). 
+
+However, it might introduces common or known vulnerabilities into the project. It will be various. It depends on which library is involved in project. The class name can be the library's signature.
+
+**Suggestion :**
+**1.** Manually change the class name and the method name can add extremely workload for attacker.
+**2.** Use obfuscation procedure to parsing classes, methods, properties in the project.
+**3.** Create honeypot with attractive name for attacker. It can waste their life little bit. 
+
+
