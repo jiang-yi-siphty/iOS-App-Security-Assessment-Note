@@ -1,48 +1,16 @@
-# Table of Contents
-
 ##Contents at a Glance
-###Contents
+###[Contents](https://github.com/robert-yi-jones/iOS-App-Security-Assessment-Note/blob/master/table_of_contents.md)
 ###[Readme](https://github.com/robert-yi-jones/iOS-App-Security-Assessment-Note/blob/master/README.md)
-###Preface
-###Chapter 0: Environment Preparing  
-###Chapter 1: Information Gathering
-###Chapter 2. Traffic Analysis
-###Chapter 3. Runtime Analysis
-###Chapter 4. Security Enhancement  
-
+###[Preface](https://github.com/robert-yi-jones/iOS-App-Security-Assessment-Note/blob/master/Preface.md)
+###[Chapter 0: Environment Preparing](https://github.com/robert-yi-jones/iOS-App-Security-Assessment-Note/blob/master/Chapter_0._Environment_Preparing.md)  
+###[Chapter 1: Information Gathering](https://github.com/robert-yi-jones/iOS-App-Security-Assessment-Note/blob/master/Chapter_1._Information_Gathering.md)
+###[Chapter 2. Traffic Analysis](https://github.com/robert-yi-jones/iOS-App-Security-Assessment-Note/blob/master/Chapter_2._Traffic_Analysis.md)
+###[Chapter 3. Runtime Analysis](https://github.com/robert-yi-jones/iOS-App-Security-Assessment-Note/blob/master/Chapter_3._Runtime_Analysis.md)
+###[Chapter 4. Security Enhancement](https://github.com/robert-yi-jones/iOS-App-Security-Assessment-Note/blob/master/Chapter_4._Security_Enhancement.md)  
+----------------------
   
   
   
 
   
-##Contents
-
-###Contents at a Glance
-###Contents
-###[Readme](https://github.com/robert-yi-jones/iOS-App-Security-Assessment-Note/blob/master/README.md)
-###Preface
-###Chapter 0: Environment Preparing 
-#### 0.1. iOS Device
-##### 0.1.1. Jailbreak 
-###Chapter 1: Information Gathering
-#### 1.1. Crack Apps from AppStore
-##### 1.1.1. clutch
-##### 1.1.2. appCrackr
-#### 1.2. otool
-#### 1.3. class-dump
-#### 1.4. iDB
-###Chapter 2. Traffic Analysis
-###Chapter 3. Runtime Analysis
-#### 3.1. Disable ASLR
-###Chapter 4. Security Enhancement  
-#### 4.0. Checklist of Potential Vulnerabilities
-#### 4.1. Obfuscation
-##### 4.1.1. iOS Class Guard
-#### 4.2. Data Protection API
-#### 4.3. Jailbreak Detection
-#### 4.4. Secure Memory
-##### 4.4.0. Theory 
-
-##### 4.4.1. iMAS memory-security
-#### 4.5. Secure URL schemes
-#### 4.6. Third Party Security Libraries  
+#Preface
