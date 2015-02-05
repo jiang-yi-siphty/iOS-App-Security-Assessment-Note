@@ -19,7 +19,11 @@
 #Chapter 4. Security Enhancement  
 All following security enhancements are coding solutions in the project. 
 ## 4.0. Checklist of Potential Vulnerabilities
-### Third Party Library 
+### Un-protected CoreData
+**Risk:** ★★★★★ 
+### Un-protected Files
+**Risk:** ★★★★★ 
+### Third Party Library Vulnerability  
 **Risk:** ★★★★☆
 ### Jailbreak 
 **Risk:** ★★★☆☆
@@ -27,6 +31,9 @@ All following security enhancements are coding solutions in the project.
 **Risk:** ★★★☆☆
 ### URL Scheme abusing
 **Risk:** ★☆☆☆☆ 
+
+
+
 ## 4.1. Obfuscation
 
 ### 4.1.1. iOS Class Guard
@@ -174,3 +181,35 @@ However, it might introduces common or known vulnerabilities into the project. I
 **1.** Manually change the class name and the method name can add extremely workload for attacker.
 **2.** Use obfuscation procedure to parsing classes, methods, properties in the project.
 **3.** Create honeypot with attractive name for attacker. It can waste their life little bit. 
+
+## 4.7. Apple Data Protection API
+### 4.7.3. Data Read/Write Protection
+### 4.7.3. File Protection
+### 4.7.3. CoreData Protection
+
+Configure fileAttributes **NSFileProtectionComplete** or others depends on scenario.
+
+	
+
+	- (NSPersistentStoreCoordinator *)persistentStoreCoordinator
+	{
+	    if (_persistentStoreCoordinator != nil) {
+	        return _persistentStoreCoordinator;
+	    }
+	    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Model.sqlite"];
+	    NSError *error = nil;
+	    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+	    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }    
+    NSDictionary *fileAttributes = [NSDictionary dictionaryWithObject:NSFileProtectionComplete forKey:NSFileProtectionKey];
+    if (![[NSFileManager defaultManager] setAttributes:fileAttributes ofItemAtPath:storeURL.path error:&error]) {
+        // Handle error
+        }
+    return _persistentStoreCoordinator;
+}
+ 
+
+ 
+
