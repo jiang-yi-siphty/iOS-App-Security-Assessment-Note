@@ -19,19 +19,24 @@
 #Chapter 4. Security Enhancement  
 All following security enhancements are coding solutions in the project. 
 ## 4.0. Checklist of Potential Vulnerabilities
-### Un-protected CoreData
-**Risk:** ★★★★★ 
-### Un-protected Files
-**Risk:** ★★★★★ 
+### Un-protected CoreData or Files
+**Risk:** ★★★★★
+Once a iPhone trusted a pc/mac, the pc/mac will be able to download app's data forever. Until iPhone be reseted by choose the "Reset Location & Privacy" option in Settings -> General -> Reset. Malicious access might happened even the iPhone is in screen lock mode. If we don't use Data Protection API, the app's data will be exposed by a pc/mac it used to trusted. 
+
 ### Third Party Library Vulnerability  
 **Risk:** ★★★★☆
+Third party library might involve un-expected well-known vulnerabilities. The security related third party library might lose protection by hackers.
+
 ### Jailbreak 
 **Risk:** ★★★☆☆
+The threat of jailbreak is come from end user. Reverse-Engineering iOS app requires a jailbreak iOS device. User can decrypt App Store binary and analysis it. If it is necessary, the app can detect iOS jailbreak status to do some preventions like abort app, use honeypot method, notice remote server. 
+
 ### Piracy 
 **Risk:** ★★★☆☆
+
 ### URL Scheme abusing
 **Risk:** ★☆☆☆☆ 
-
+The abusing of URL scheme doesn't really hurt anyone in most scenarios. But it can annoy app user by other app's un-expected invoke. So, before your app does anything as URL Scheme told, please authenticate invoker or prompt to app user. 
 
 
 ## 4.1. Obfuscation
@@ -181,6 +186,7 @@ However, it might introduces common or known vulnerabilities into the project. I
 **1.** Manually change the class name and the method name can add extremely workload for attacker.
 **2.** Use obfuscation procedure to parsing classes, methods, properties in the project.
 **3.** Create honeypot with attractive name for attacker. It can waste their life little bit. 
+**4.** Keep updating third party libraries in the project. 
 
 ## 4.7. Apple Data Protection API
 ### 4.7.3. Data Read/Write Protection
