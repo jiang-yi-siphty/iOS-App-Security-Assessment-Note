@@ -68,7 +68,8 @@ RVM will leave your “system Ruby” untouched and use your shell to intercept 
 	$ \curl -L https://get.rvm.io | bash -s stable --ruby
 	$ gem -v
 	2.0.14
-	rvm install ruby --enable-shared 
+  	$ source /Users/<xxxxx>/.rvm/scripts/rvm
+	$ rvm install ruby --enable-shared 
 Sourse: [Install Ruby on Rails · Mac OS X Yosemite](http://railsapps.github.io/installrubyonrails-mac.html)   	
 
 #### 0.2.4. homebrew
@@ -141,14 +142,19 @@ Unzip it to
 #### 0.2.10. MobilSubstrate
 Configure MobileSubstrate environment in Terminal  
 
-	$ sudo $THEOS/bin.bootstrap.sh substrate
+	$ sudo $THEOS/bin/bootstrap.sh substrate
+	
 Copy libsubstrate.dylib from iOS device /Library/Frameworks/CydiaSubstrate.framework/CydiaSubstrate to local mac's $THEOS/lib/libsubstrate.dylib
 
-	$ sudo mv -f /the/path/to/CydiaSubstrate $THEOS/lib/libsubstrate.dylib
+	$ sudo mv -f /<the/path/to>/CydiaSubstrate $THEOS/lib/libsubstrate.dylib
  
 #### 0.2.11. dpkg
 Download and install MacPorts from <https://www.macports.org/install.php>
 Than, setup environment and update
+
+Xcode 4 and later users need to first accept the Xcode EULA by either launching Xcode or running:  
+
+    $ xcodebuild -license
 
 	$ export port=/opt/bin/port
 	$ sudo port selfupdate
@@ -163,7 +169,7 @@ There are 5 Theos project templates in NIC templates packet. Download and decomp
 <https://github.com/DHowett/theos-nic-templates/archive/master.zip>  
 to  
 
-	$THEOS/templates/iphone
+	$ THEOS/templates/iphone
 
 #### class-dump
 [class-dump](http://stevenygard.com/projects/class-dump/) is a command-line utility for examining the Objective-C runtime information stored in Mach-O files. It generates declarations for the classes, categories and protocols. This is the same information provided by using ‘otool -ov’, but presented as normal Objective-C declarations, so it is much more compact and readable.
