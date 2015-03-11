@@ -33,4 +33,16 @@
 #### 1.4. iDB
 ###Chapter 2. Traffic Analysis
 ###Chapter 3. Runtime Analysis
+#### 3.1. Disable ASLR
 ###Chapter 4. Security Enhancement  
+#### 4.0. Checklist of Potential Vulnerabilities
+#### 4.1. Obfuscation
+##### 4.1.1. iOS Class Guard
+#### 4.2. Data Protection API
+#### 4.3. Jailbreak Detection
+#### 4.4. Secure Memory
+##### 4.4.0. Theory 
+
+##### 4.4.1. iMAS memory-security
+#### 4.5. Secure URL schemes
+#### 4.6. Third Party Security Libraries  
