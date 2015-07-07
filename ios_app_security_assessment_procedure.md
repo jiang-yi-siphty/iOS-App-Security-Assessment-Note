@@ -13,12 +13,13 @@ After jailbreak, we need add sources in Cydia.
 	http://repo.biteyourapple.net/
 	http://coolstar.org/publicrepo/
 	http://repo.insanelyi.com/
-	http://apt.modmyi.com/
-	http://nix.howett.net/theos/
+	// http://apt.modmyi.com/
+	// http://nix.howett.net/theos/
 	http://cydia.xsellize.com/
 	http://apt.weiphone.com/
 	http://Apt.178.com/
-	http://AppAddict.org/repo
+	// http://AppAddict.org/repo
+	http://apt.modmyi.com
 	
 #### 0.1.3. Install Tools
 **afc2add**  
@@ -27,7 +28,7 @@ After jailbreak, we need add sources in Cydia.
 **Clutch Beta**  
 **Darwin CC Tools**  
 **iFile**  
-**insanelyi App - iOS8 **  
+**insanelyi App - iOS8**  
 **iOS Toolchain**  
 **iWep PRO 8**  
 **ldone**
