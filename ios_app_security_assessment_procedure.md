@@ -6,7 +6,7 @@
 
 ### 0.1. iOS Device
 #### 0.1.1. Jailbreak
-For iOS 8.x.x, [Taig](http://www.taig.com/) is the best freeware to jailbreak, currently. (Dec 2014)
+For iOS 8.x.x, [Taig](http://www.taig.com/) is the best freeware to jailbreak, currently. (Dec 2014)(Jun 2015)
 #### 0.1.2. Add Sources/Repos
 After jailbreak, we need add sources in Cydia. 
 
@@ -20,6 +20,7 @@ After jailbreak, we need add sources in Cydia.
 	http://Apt.178.com/
 	// http://AppAddict.org/repo
 	http://apt.modmyi.com
+	http://apt.3kzhushou.com/
 	
 #### 0.1.3. Install Tools
 **afc2add**  
@@ -37,7 +38,11 @@ After jailbreak, we need add sources in Cydia.
 **OpenSSH** (Must change root password after install)  
 **Pod2g's ASLR Tools**  
 **theos8**  
+**TaiG AFC2**  
 
+
+#####Terminal Commands  
+**top**
 
 ### 0.2. Mac
 Source: [Setting Up Your Development Environment](https://github.com/makersquare/student-dev-box/wiki/Setting-Up-Your-Development-Environment)
