@@ -152,6 +152,10 @@ There are couple of ways can detect jailbreak. The following code is a combinati
     
 And, attacker also has way to [bypass above jailbreak detection](http://highaltitudehacks.com/2013/12/17/ios-application-security-part-24-jailbreak-detection-and-evasion/) by using Cycript and Class-dump-z. Developer can change the +(BOOL)isJailbroken method name to something that doesn’t look quite appealing to the hacker. Or developer can use **obfuscation** to slow-down attacker's analysis significantly....   
 This war never ends...  
+### 4.3.1 Bypassing Jailbreak Detection Using Xcon  
+Downloading Xcon in your project is very straightforward. Make sure http://apt.modmyi.com is added as a source in Cydia and search for Xcon. Install in on your device and restart your device.   
+Once you run any app, you will notice that the library will inject into the process as can be seen from the following 
+### 4.3.2 Bypassing Jailbreak Detection Using Xcon  
 ## 4.4. Secure Memory
 ### 4.4.0. Theory 
 
