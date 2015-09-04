@@ -41,7 +41,11 @@ After jailbreak, we need add sources in Cydia.
 **MobileTerminal(iOS7)**  
 **OpenSSH** (Must change root password after install)  
 **Pod2g's ASLR Tools**  
-**theos8**  
+**theos8**   
+**network-comds** 
+
+In terminal mode, install following tools
+apt-get install wget
 
 
 ## 0.2. Mac
