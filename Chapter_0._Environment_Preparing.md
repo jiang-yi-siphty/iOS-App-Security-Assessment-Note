@@ -143,7 +143,10 @@ Unzip it to
  
 	/opt/theos/bin
 	
-
+----- New way -----
+ 
+	$ brew update
+	$ brew install ldid
 ### 0.2.10. MobilSubstrate
 Configure MobileSubstrate environment in Terminal  
 
